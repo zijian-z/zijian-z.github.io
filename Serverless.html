@@ -1,36 +1,48 @@
-<h3>Serverless</h3>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Serverless</h3>
 
-<p>Serverless - 无服务，或者无服务器。<a href="http://icyfenix.cn/architecture/architect-history/serverless.html">周志明老师在这里有介绍。</a></p>
-<p>我对其的简单理解便是：服务的粒度被抽象成了函数，可以被任意组装和部署。</p>
-<p>可以用 GitHub Pages 部署前端，免费的 Serverless 部署后端，来玩一玩前后端分离的项目。下面就是一个简单的🌰。</p>
-
-<button onclick='ping()'>ping</button>
-<input type="number" id="num">
-<button onclick="plus1()">plus1</button>
+    <p>Serverless - 无服务，或者无服务器。<a href="http://icyfenix.cn/architecture/architect-history/serverless.html">周志明老师在这里有介绍。</a></p>
+    <p>我对其的简单理解便是：服务的粒度被抽象成了函数，可以被任意组装和部署。</p>
+    <p>可以用 GitHub Pages 部署前端，免费的 Serverless 部署后端，来玩一玩前后端分离的项目。下面就是一个简单的🌰。</p>
     
-<script>
-    function ping() {
-        fetch('https://service-7tude6jw-1253551997.gz.apigw.tencentcs.com/release/ping')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(myJson) {
-            alert(myJson['res']);
-        });
-    }
-    function plus1() {
-        fetch('https://service-7tude6jw-1253551997.gz.apigw.tencentcs.com/release/plus1', {
-            body: JSON.stringify({'num': document.getElementById('num').value}),
-            headers: {
-                'content-type': 'application/json'
-            },
-            method: 'POST'
-        })
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(myJson) {
-            alert(myJson['res']);
-        });
-    }
-</script>
+    <button onclick='ping()'>ping</button>
+    <input type="number" id="num">
+    <button onclick="plus1()">plus1</button>
+        
+    <script>
+        function ping() {
+            fetch('https://service-7tude6jw-1253551997.gz.apigw.tencentcs.com/release/ping')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(myJson) {
+                alert(myJson['res']);
+            });
+        }
+        function plus1() {
+            fetch('https://service-7tude6jw-1253551997.gz.apigw.tencentcs.com/release/plus1', {
+                body: JSON.stringify({'num': document.getElementById('num').value}),
+                headers: {
+                    'content-type': 'application/json'
+                },
+                method: 'POST'
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(myJson) {
+                alert(myJson['res']);
+            });
+        }
+    </script>    
+        
+</body>
+</html>
