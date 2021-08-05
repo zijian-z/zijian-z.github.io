@@ -28,8 +28,13 @@
             });
         }
         function plus1() {
+            const num = document.getElementById('num').value;
+            if (num === '') {
+                alert('请输入数字');
+                return;
+            }
             fetch('https://service-7tude6jw-1253551997.gz.apigw.tencentcs.com/release/plus1', {
-                body: JSON.stringify({'num': document.getElementById('num').value}),
+                body: JSON.stringify({'num': num}),
                 headers: {
                     'content-type': 'application/json'
                 },
