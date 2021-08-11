@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>几种常见的设计模式</title>
+</head>
+<body>
+    <h2>几种常见的设计模式</h2>
+    <h3>工厂方法</h3>
+    <p>例如 Java Integer 类中的 valueOf 方法。可以用来隐藏具体的实现细节，实现改变了不影响外部使用。</p>
+    <pre>
+        <code>
+            public static Integer valueOf(int i) {
+                if (i >= IntegerCache.low && i <= IntegerCache.high)
+                   return IntegerCache.cache[i + (-IntegerCache.low)];
+                return new Integer(i);
+            }
+        </code>
+    </pre>
+
+    <h3>单例模式</h3>
+    <p>Spring 中很多 bean 就是单例模式，有几种不同的实现方法。</p>
+    <h4>在类加载时初始化</h4>
+    <pre>
+        <code>
+            public class Singleton {
+                // 静态字段引用唯一实例:
+                public static final Singleton INSTANCE = new Singleton();
+            
+                // private构造方法保证外部无法实例化:
+                private Singleton() {
+                }
+            }
+        </code>
+    </pre>
+
+    <h4>使用enum类，保证是单例</h4>
+    <pre>
+        <code>
+            public enum Weekday {
+                MONDAY("星期一", 1);
+                
+                private String name;
+                private int index;
+            
+                Weekday(String name, int index) {
+                    this.name = name;
+                    this.index = index;
+                }
+            }
+        </code>
+    </pre>
+
+    <h4>双重校验</h4>
+    <pre>
+        <code>
+            public class Singleton {
+                private static volatile Singleton INSTANCE = null;
+                private Singleton() {}
+                public static Singleton getINSTANCE() {
+                    if (INSTANCE == null) {
+                        synchronized (Singleton.class) {
+                            if (INSTANCE == null) {
+                                INSTANCE = new Singleton();
+                            }
+                        }
+                    }
+                    return INSTANCE;
+                }
+            }
+        </code>
+    </pre>
+    <p>第一次 if 用于提升效率，第二次 if 保证只初始化一次；new 并不是原子操作，不加 volatile 可能会指令重排，返回不是 null ，但没有初始化的实例。</p>
+
+    <h3>建造者模式</h3>
+    <p>例如 lombok 中的 @Builder 注解。</p>
+
+    <h3>责任链</h3>
+    <p>例如 Servlet 中的 Filter 。</p>
+    
+</body>
+</html>
