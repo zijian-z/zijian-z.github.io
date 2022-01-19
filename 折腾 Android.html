@@ -14,22 +14,23 @@
     <h3>换系统</h4>
     <p>这一步跟着<a href="https://wiki.lineageos.org/devices/alioth/install">教程</a>来就行了。</p>
 
-    <h3><a href="https://magiskmanager.com/">刷入 Magisk</a></h3>
-    <p>这个官方的教程也很详细，Magisk Manager 用来管理模块，可以直接安装；Magisk 需要在 recovery 模式下刷入。</p>
+    <h3>刷入 Magisk</a></h3>
+    <p>这个<a href="https://sspai.com/post/67932">教程</a>很详细。</p>
 
     <h3><a href="https://opengapps.org/">刷入 Open GApps</a></h3>
     <p>LineageOS 本身是不带 Google 的服务框架和应用的，需要手动在 recovery 模式下刷入。</p>
 
     <h3>推荐的 Magisk 模块</h3>
     <ol>
-        <li>Fullscreen/Immersive Gestures，更好地体验全面屏</li>
+        <del><li>Fullscreen/Immersive Gestures，更好地体验全面屏</li></del>
         <li>Riru, Riru-LSPosed, Riru-Enhanced mode for Storage Isolation</li>
+        <li>Noto-Super-OTC-Magisk</li>
     </ol>
 
     <h3>推荐的 Xposed 模块</h3>
     <ol>
         <li>知了</li>
-        <li>NekoSMS，自定义屏蔽短信</li>
+        <li>BiliRoaming</li>
     </ol>
 
     <h3>推荐的应用</h3>
@@ -38,5 +39,11 @@
         <li>AdAway，屏蔽广告，可以在 F-Droid 中下载</li>
         <li>存储空间隔离，防止应用在文件系统中乱拉屎</li>
     </ol>
+
+    <h3>一个很简单的 Xposed 模块</h3>
+    <p>AOSP 自带的消息应用在收到消息时，会在下面附加一行快速回复“是的 不 好 呵呵 ...”。</p>
+    <p>“呵呵”意义已经有了很大的变化，有时候不小心碰到就尴尬了。索性写了一个简单的 Xposed 模块直接消除这一行快速回复。
+        <a href="https://github.com/zijian-z/SMSHook/releases">此处下载</a>
+    </p>
 </body>
 </html>
